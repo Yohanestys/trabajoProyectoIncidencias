@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+<f:loadBundle basename="resources.application" var="msg"></f:loadBundle>
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<!--  <link rel="shortcut icon" type="image/x-icon" href="#{resource['imagenes/azarquiel.ico']}"/>-->
+	<h:outputStylesheet library="css" name="styles.css" />
+	<h:outputStylesheet library="css" name="menuHeader.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
+		<h:outputStylesheet library="css" name="logout.css"></h:outputStylesheet>
+	
+	<!--<h:outputScript library="js" name="SpryMenuBar.js"></h:outputScript>
+    <h:outputScript library="js" name="marcartodos.js"></h:outputScript>-->
+</h:head>
+
+<h:body>
+
+    <ui:insert name="metadata"/>
+    <div class="contenedor">
+        <div class="itemHeader">
+        	<nav>
+        	    <h:link
+        	    	 rendered="#{not empty request.remoteUser}"
+                     outcome="/admin/perfil.xhtml?faces-redirect=true"
+                     value="Perfil"></h:link> 
+        	    <h:link
+        	    	 rendered="#{not empty request.remoteUser}"
+                     outcome="/admin/crearUsuario.xhtml?faces-redirect=true"
+                     value="Crear Usuario"></h:link> 
+                <h:link
+                	 rendered="#{not empty request.remoteUser}"
+                     outcome="/admin/crearIncidencia.xhtml?faces-redirect=true"
+                     value="Crear Incidencia"></h:link> 
+                <h:link
+                	 rendered="#{not empty request.remoteUser}"
+                     outcome="/admin/incidencias.xhtml?faces-redirect=true"
+                     value="Incidencias"></h:link> 
+                <h:link
+                	 rendered="#{not empty request.remoteUser}"
+                     outcome="/admin/item5.xhtml?faces-redirect=true"
+                     value="Otro"></h:link> 
+                
+    		    <h:link
+    		    	 rendered="#{not empty request.remoteUser}"
+                     outcome="/admin/index.xhtml?faces-redirect=true"
+                     value="Inicio"></h:link> 
+            </nav>
+        </div>
+        <div class="itemBody">
+            <div class="itemAside">
+				<ui:insert name="itemAside">
+			    			<div id="log">
+								<ui:insert name="log">
+									<ui:include src="/seguridad/identificate.xhtml"/>
+								</ui:insert>
+							</div>
+							<div id="logout">
+								<ui:insert name="logout">
+									<ui:include src="/seguridad/logout.xhtml"/>
+								</ui:insert>
+							</div>
+
+			    	<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+						<!-- <div> -->
+						<!-- <ui:include src="content.xhtml"/> -->
+						<!-- </div> -->
+				</ui:insert>
+            </div>
+            <div class="itemMain">
+				<ui:insert name="itemMain">
+			    	Content area.  See comments below this line in the source.
+			    	<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+						<!-- <div> -->
+						<!-- <ui:include src="content.xhtml"/> -->
+						<!-- </div> -->
+				</ui:insert>
+            </div>
+        </div>
+        <div class="itemFooter">
+        	<ui:insert name="footer">
+          	<p>Copyright &#169; Trabajo FTC 2020</p>
+			</ui:insert>
+        </div>
+    </div>
+</h:body>
+</f:view>
+</html>
