@@ -12,8 +12,8 @@
 	<h:outputStylesheet library="css" name="styles.css" />
 	<h:outputStylesheet library="css" name="menuHeader.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
-		<h:outputStylesheet library="css" name="logout.css"></h:outputStylesheet>
-	
+	<h:outputStylesheet library="css" name="logout.css"></h:outputStylesheet>
+	<h:outputScript  library="js" name="code.js"></h:outputScript>
 	<!--<h:outputScript library="js" name="SpryMenuBar.js"></h:outputScript>
     <h:outputScript library="js" name="marcartodos.js"></h:outputScript>-->
 </h:head>
@@ -26,19 +26,19 @@
         	<nav>
         	    <h:link
         	    	 rendered="#{not empty request.remoteUser}"
-                     outcome="/admin/perfil.xhtml?faces-redirect=true"
+                     outcome="/usuario/perfil.xhtml?faces-redirect=true"
                      value="Perfil"></h:link> 
         	    <h:link
-        	    	 rendered="#{not empty request.remoteUser}"
+        	    	 rendered="#{not empty request.remoteUser and request.isUserInRole('superadmin')}"
                      outcome="/admin/crearUsuario.xhtml?faces-redirect=true"
                      value="Crear Usuario"></h:link> 
                 <h:link
                 	 rendered="#{not empty request.remoteUser}"
-                     outcome="/admin/crearIncidencia.xhtml?faces-redirect=true"
+                     outcome="/usuario/crearIncidencia.xhtml?faces-redirect=true"
                      value="Crear Incidencia"></h:link> 
                 <h:link
                 	 rendered="#{not empty request.remoteUser}"
-                     outcome="/admin/incidencias.xhtml?faces-redirect=true"
+                     outcome="/usuario/incidencias.xhtml?faces-redirect=true"
                      value="Incidencias"></h:link> 
                 <h:link
                 	 rendered="#{not empty request.remoteUser}"
@@ -47,7 +47,7 @@
                 
     		    <h:link
     		    	 rendered="#{not empty request.remoteUser}"
-                     outcome="/admin/index.xhtml?faces-redirect=true"
+                     outcome="/usuario/inicio.xhtml?faces-redirect=true"
                      value="Inicio"></h:link> 
             </nav>
         </div>

@@ -57,12 +57,10 @@
   
   
   
-  
-  
   <security-constraint>
-	<display-name>Consulta Bibliografica</display-name>
+	<display-name>Usuarios registrados</display-name>
 	<web-resource-collection>
-	  <web-resource-name>Consulta Bibliografica</web-resource-name>
+	  <web-resource-name>Usuarios registrados</web-resource-name>
 	  <description></description>
 	  <url-pattern>/usuario/*</url-pattern>
 	  </web-resource-collection>

@@ -9,88 +9,101 @@
 <ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
 
 	<ui:define name="itemMain">
-	   	<div id="frmeditUsuarios" class="formulariogeneral">
-	   		<h:panelGrid id="panelTab" styleClass="panelTabla">
-	   		<h:outputText value="&nbsp;"></h:outputText>
+		<div id="frmeditUsuarios" class="formulariogeneral">
 			<h:messages id="messages" globalOnly="true" layout="table"
 				infoClass="info" errorClass="advertencia"></h:messages>
-					<h:form id="frmnuevoUsuario" prependId="false" >
+			<h:panelGrid id="panelTab" styleClass="panelTabla">
+				<h:outputText value="&nbsp;"></h:outputText>
+				<h:form id="frmnuevoUsuario" prependId="false">
 					<fieldset>
-							<legend>Nuevo Usuario</legend>
-								<h:panelGrid id="createUser" title="Datos del Usuario" columns="2" border="0">
-									<h:outputText value="#{msg['pagina.altausuario.email']}"></h:outputText>
-									<h:inputText id="emailusuario"
-										value="#{backingCrearUsuario.email}" required="true"
-										requiredMessage="Campo obligatorio" >
-										<f:ajax event="blur" render="msgAltaUsuarioEmail" />
-									</h:inputText>
-									<h:message for="emailusuario" errorClass="advertencia"></h:message>
-									<!-- Contraseña -->
-									<h:outputText value="#{msg['pagina.altausuario.passwd']}"></h:outputText>
-									<h:inputText id="passusuario"
-										value="#{backingCrearUsuario.passwd}" required="true"
-										requiredMessage="Campo obligatorio" >
-										<f:ajax event="blur" render="msgAltaUsuarioPass" />
-									</h:inputText>
-									<h:message for="passusuario" errorClass="advertencia"></h:message>
-									<!-- Primer Apellido -->
-									<h:outputText value="#{msg['pagina.altausuario.apellido1']}"></h:outputText>
-									<h:inputText id="apellido1usuario"
-										value="#{backingCrearUsuario.apellido1}" required="true"
-										requiredMessage="Campo obligatorio" >
-										<f:ajax event="blur" render="msgAltaUsuarioApellido1" />
-									</h:inputText>
-									<h:message for="apellido1usuario" errorClass="advertencia"></h:message>
-									<!-- Segundo apellido -->
-									<h:outputText value="#{msg['pagina.altausuario.apellido2']}"></h:outputText>
-									<h:inputText id="apellido2usuario"
-										value="#{backingCrearUsuario.apellido2}" required="true"
-										requiredMessage="Campo obligatorio" >
-										<f:ajax event="blur" render="msgAltaUsuarioApellido2" />
-									</h:inputText>
-									<h:message for="apellido2usuario" errorClass="advertencia"></h:message>
-									<!-- Nombre -->
-									<h:outputText value="#{msg['pagina.altausuario.nombre']}"></h:outputText>
-									<h:inputText id="nombreusuario"
-										value="#{backingCrearUsuario.nombre}" required="true"
-										requiredMessage="Campo obligatorio" >
-										<f:ajax event="blur" render="msgAltaUsuarioNombre" />
-									</h:inputText>
-									<h:message for="nombreusuario" errorClass="advertencia"></h:message>
-									<!-- tel -->
-									<h:outputText value="#{msg['pagina.altausuario.tel']}"></h:outputText>
-									<h:inputText id="telusuario"
-										value="#{backingCrearUsuario.tel}" required="true"
-										requiredMessage="Campo obligatorio" >
-										<f:ajax event="blur" render="msgAltaUsuarioTel" />
-									</h:inputText>
-									<h:message for="telusuario" errorClass="advertencia"></h:message>
-											
-								<h:selectOneMenu value="#{backingCrearUsuario.idperfil}">
-									<h:outputLabel value="#{msg['pagina.altausuario.rol']}" for="frmnuevoUsuario"></h:outputLabel>
-									<f:selectItems value="#{backingCrearUsuario.listaPerfil}" var="perfil" itemValue="#{perfil.idrol}" itemLabel="#{perfil.idrol}" />
-									<f:ajax event="change" render="@form" execute="@form" listener="#{backingCrearUsuario.ajaxListaDepartamento()}"/>
-								</h:selectOneMenu>
-								
-								<br/><br/>	
-								<!--  <h:outputLabel value="#{backingCrearUsuario.idperfil}" ></h:outputLabel>-->
-								<br/><br/>
-								<br/><br/>	
-								<h:selectOneMenu value="#{backingCrearUsuario.iddepartamento}"
-								rendered="#{backingCrearUsuario.listaDepartamento!=null}"
-								>
-									<h:outputLabel value="#{msg['pagina.altausuario.departamento']}" for="frmnuevoDepartamento"></h:outputLabel>
-									<f:selectItems value="#{backingCrearUsuario.listaDepartamento}" var="departamento" itemValue="#{departamento.iddepartamento}" itemLabel="#{departamento.nombreDepartamento}" />
-									<f:ajax event="blur" render="@form frmeditUsuarios" execute="@form"/>
-									<f:ajax event="change" render="@form frmeditUsuarios" execute="@form"/>
-		
-								</h:selectOneMenu>
-								
-								<br/><br/>	
-									<h:commandButton action="#{backingCrearUsuario.nuevoUsuario}"
-										value="#{msg['generico.botonguardar']}">
-										<f:ajax execute="@form" render="@form frmeditUsuarios :messages" />
-									</h:commandButton>
+						<legend>Nuevo Usuario</legend>
+						<h:panelGrid id="createUser" title="Datos del Usuario" columns="2"
+							border="0">
+							<h:outputText value="#{msg['pagina.altausuario.email']}"></h:outputText>
+							<h:inputText id="emailusuario"
+								value="#{backingCrearUsuario.email}" required="true"
+								requiredMessage="Campo obligatorio">
+								<f:ajax event="blur" render="msgAltaUsuarioEmail" />
+							</h:inputText>
+							<h:message for="emailusuario" errorClass="advertencia"></h:message>
+							<!-- Contraseña -->
+							<h:outputText value="#{msg['pagina.altausuario.passwd']}"></h:outputText>
+							<h:inputText id="passusuario"
+								value="#{backingCrearUsuario.passwd}" required="true"
+								requiredMessage="Campo obligatorio">
+								<f:ajax event="blur" render="msgAltaUsuarioPass" />
+							</h:inputText>
+							<h:message for="passusuario" errorClass="advertencia"></h:message>
+							<!-- Primer Apellido -->
+							<h:outputText value="#{msg['pagina.altausuario.apellido1']}"></h:outputText>
+							<h:inputText id="apellido1usuario"
+								value="#{backingCrearUsuario.apellido1}" required="true"
+								requiredMessage="Campo obligatorio">
+								<f:ajax event="blur" render="msgAltaUsuarioApellido1" />
+							</h:inputText>
+							<h:message for="apellido1usuario" errorClass="advertencia"></h:message>
+							<!-- Segundo apellido -->
+							<h:outputText value="#{msg['pagina.altausuario.apellido2']}"></h:outputText>
+							<h:inputText id="apellido2usuario"
+								value="#{backingCrearUsuario.apellido2}" required="true"
+								requiredMessage="Campo obligatorio">
+								<f:ajax event="blur" render="msgAltaUsuarioApellido2" />
+							</h:inputText>
+							<h:message for="apellido2usuario" errorClass="advertencia"></h:message>
+							<!-- Nombre -->
+							<h:outputText value="#{msg['pagina.altausuario.nombre']}"></h:outputText>
+							<h:inputText id="nombreusuario"
+								value="#{backingCrearUsuario.nombre}" required="true"
+								requiredMessage="Campo obligatorio">
+								<f:ajax event="blur" render="msgAltaUsuarioNombre" />
+							</h:inputText>
+							<h:message for="nombreusuario" errorClass="advertencia"></h:message>
+							<!-- tel -->
+							<h:outputText value="#{msg['pagina.altausuario.tel']}"></h:outputText>
+							<h:inputText id="telusuario" value="#{backingCrearUsuario.tel}"
+								required="true" requiredMessage="Campo obligatorio">
+								<f:ajax event="blur" render="msgAltaUsuarioTel" />
+							</h:inputText>
+							<h:message for="telusuario" errorClass="advertencia"></h:message>
+
+							<h:selectOneMenu value="#{backingCrearUsuario.idperfil}">
+								<h:outputLabel value="#{msg['pagina.altausuario.rol']}"
+									for="frmnuevoUsuario"></h:outputLabel>
+								<f:selectItems value="#{backingCrearUsuario.listaPerfil}"
+									var="perfil" itemValue="#{perfil.idrol}"
+									itemLabel="#{perfil.idrol}" />
+								<f:ajax event="change" render="@form" execute="@form"
+									listener="#{backingCrearUsuario.ajaxListaDepartamento()}" />
+							</h:selectOneMenu>
+
+							<br />
+							<br />
+							<!--  <h:outputLabel value="#{backingCrearUsuario.idperfil}" ></h:outputLabel>-->
+							<br />
+							<br />
+							<br />
+							<br />
+							<h:selectOneMenu value="#{backingCrearUsuario.iddepartamento}"
+								rendered="#{backingCrearUsuario.listaDepartamento!=null}">
+								<h:outputLabel value="#{msg['pagina.altausuario.departamento']}"
+									for="frmnuevoDepartamento"></h:outputLabel>
+								<f:selectItems value="#{backingCrearUsuario.listaDepartamento}"
+									var="departamento" itemValue="#{departamento.iddepartamento}"
+									itemLabel="#{departamento.nombreDepartamento}" />
+								<f:ajax event="blur" render="@form frmeditUsuarios"
+									execute="@form" />
+								<f:ajax event="change" render="@form frmeditUsuarios"
+									execute="@form" />
+
+							</h:selectOneMenu>
+
+							<div class="buttons">
+								<h:commandButton action="#{backingCrearUsuario.nuevoUsuario}"
+									value="#{msg['generico.botonguardar']}">
+									<f:ajax execute="@form"
+										render="@form frmeditUsuarios :messages" />
+								</h:commandButton>
+							</div>
 						</h:panelGrid>
 					</fieldset>
 				</h:form>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
+
+	<ui:define name="itemMain">
+		<h:outputText value="&nbsp;"></h:outputText>
+		<h:messages id="messages" globalOnly="true" layout="table"
+		infoClass="info" errorClass="advertencia"></h:messages>
+		<div id="frmeditUsuarios" class="formulariogeneral">
+	    	<h:panelGroup id="panelTab" styleClass="panelTabla" layout="block">
+				<h:outputText value="&nbsp;"></h:outputText>
+				<h:form id="frmnuevoUsuario" prependId="false" >
+					<legend>#{msg['pagina.altausuario.datosPersonales']}</legend>
+					<div>
+						<h:outputLabel value="#{msg['pagina.altausuario.email']}" />
+						<h:inputText disabled="true" value="#{backingAuth.usuarioLogeado.email}" />
+						<h:link value="#{msg['pagina.altausuario.edit']}" />
+						
+					</div>
+					<div>
+						<h:outputLabel value="#{msg['pagina.altausuario.passwd']}" />
+						<h:inputText id="UserPass" value="#{backingAuth.password}">
+							<f:ajax execute="@form"  render="@render frmnuevoUsuario" />							
+						</h:inputText>		
+						<h:commandLink id="editarUserPass"
+							value="#{msg['pagina.altausuario.edit']}">	
+							<f:ajax execute="@this" render="@none" />						
+						</h:commandLink>	
+					</div>
+					<div>
+						<h:outputLabel value="#{msg['pagina.altausuario.apellido1']}" />
+						<h:inputText  disabled="true" value="#{backingAuth.usuarioLogeado.apellido1}" />
+						<h:link value="#{msg['pagina.altausuario.edit']}" />
+					</div>		
+					<div>
+						<h:outputLabel value="#{msg['pagina.altausuario.apellido2']}" />
+						<h:inputText disabled="true" value="#{backingAuth.usuarioLogeado.apellido2}" />
+						<h:link value="#{msg['pagina.altausuario.edit']}" />
+					</div>
+					<div>
+						<h:outputLabel value="#{msg['pagina.altausuario.nombre']}" />
+						<h:inputText disabled="true" value="#{backingAuth.usuarioLogeado.nombre}" />
+						<h:link value="#{msg['pagina.altausuario.edit']}" />
+					</div>	
+					<div>	
+						<h:outputLabel value="#{msg['pagina.altausuario.tel']}" />
+						<h:inputText disabled="true" value="#{backingAuth.usuarioLogeado.tel}" />
+						<h:link value="#{msg['pagina.altausuario.edit']}" />
+						
+					</div>	
+						
+					<div class="buttons">
+						<h:commandButton id="guardarDatosPersonales" action="#{backingAuth.updateUser}"
+						value="#{msg['generico.botonguardar']}">
+						<f:ajax execute="@form" render="@form frmnuevoUsuario :messages"/>
+						</h:commandButton>	
+					</div>
+				</h:form>
+	    	</h:panelGroup>
+	    </div>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -10,11 +10,21 @@
 	top: 0%;
 	height: 50%;
 	z-index: 1;
+	padding: 0.4em;
+	width: 100%;
 }
 
 #logout #tituloLogout{
 	align-self: left;
+	position: absolute;
+	text-align: left;
+	top: -97%;
 	font-size: 0.8em;
+	background-color: rgba(0,0,0,0.6);
+	color: #fff;
+	padding: 0.4em 0.4em;
+	border-radius: 0.2em;
+	margin-bottom: 0.2em;
 }
 
 #logout input {
@@ -25,3 +35,4 @@
 #logout input:hover {
 	background-color: lightgreen;
 }
+

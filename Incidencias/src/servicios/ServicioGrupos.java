@@ -23,7 +23,6 @@ import entidades.Usuario;
 public class ServicioGrupos {
 	@PersistenceContext(unitName = "Incidencias")
 	private EntityManager em;
-	private Usuario usuario;
 
 	
     /**
@@ -33,39 +32,6 @@ public class ServicioGrupos {
         // TODO Auto-generated constructor stub
     }
     
-   /* ************************/
-    
-	public Usuario nuevoUsuario(Usuario u,Long iddepartamento) {
-		
-		if(iddepartamento!=null){
-		Departamento departamento = em.find(Departamento.class, iddepartamento);
-		u.setDepartamento(departamento);
-		} else {
-			u.setDepartamento(null);
-
-		}
-		
-		usuario = u;
-		em.persist(u);
-    	return u;
-    }
-    
-    public Grupo nuevoGrupo(String idperfil) {
-		Grupo grupo = new Grupo();
-		grupo.setUsuario(usuario);
-		Rol perfil = em.find(Rol.class, idperfil);
-		grupo.setRol(perfil);
-    	em.persist(grupo);
-		System.out.println("Usuario: "+usuario.getNombre()+ " creado...");
-    	return grupo;
-    }
-    
-    
-    
-    
-    
-    
-    /******************* */
     
     @SuppressWarnings("unchecked")
     public List<Rol> listaPerfiles(){
