@@ -148,6 +148,8 @@ body {
 	width:50%
 }
 
+
+
 .contenedor .itemBody .itemMain .formulariogeneral table {
 	margin: 0;
 	width: 100%;
@@ -239,8 +241,8 @@ body {
 
 
 .contenedor .itemBody .itemMain div{
-	width: 96%;
-	margin-left: 2%;
+	width: 98%;
+	margin-left: 1%;
 	
 }
 
@@ -304,6 +306,26 @@ body {
 .contenedor .itemBody .itemMain #frmnuevoUsuario  div:last-of-type #guardarDatosPersonales:hover{
 	background-color: lightgreen;
 }
+
+
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado {
+	margin-left: 2%;
+	width: 96%;
+	
+}
+
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table tr:first-of-type th{
+	background-color: #999;
+}
+
+
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table tr:nth-of-type(2n){
+	
+	background-color: lightgray;
+}
+
+
+
 
 .contenedor .itemFooter p {
     align-self: center;
@@ -589,27 +611,7 @@ body {
     }
     
   
-  .contenedor .itemBody .itemMain #panelTap {
-    widh: 96%;
-    margin-left:2%;
-    border: 1px solid #000;
-    }
-    
-    
- .contenedor .itemBody .itemMain #panelTap form{
-    widh: 100%;
-    margin-left:2%;
-    border: 1px solid #000;
-    }
-    
-   .contenedor .itemBody .itemMain #panelTap form table{
 
-    border: 1px solid #000;
-    }
-    
-    
-	
-}
 
 
 

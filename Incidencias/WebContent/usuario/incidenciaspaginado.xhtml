@@ -12,11 +12,11 @@
 	   	<h:messages id="messages" globalOnly="true" layout="table"
 			errorClass="advertencia" infoClass="info">
 		</h:messages>
-		<h:panelGroup id="panelTab" styleClass="panelTabla"
+		<h:panelGroup id="panelTabPaginada" styleClass="panelTabla"
 			rendered="#{backingMostarIncidencias.paginacion.itemsCount>0}" layout="block">
 			<h:form id="frmlistadoincidenciaspaginado" prependId="false">
 				<div>&nbsp;</div>
-				<div class="navegacionTabla">
+				<div class="navegacionTablaPaginada">
 					<h:outputText
 						value="Mostrando #{backingMostarIncidencias.paginacion.primerElementoPagina}..#{backingMostarIncidencias.paginacion.ultimoElementoPagina} de #{backingMostarIncidencias.paginacion.itemsCount}" />
 					&nbsp;
@@ -41,7 +41,7 @@
 						<f:ajax listener="#{backingMostarIncidencias.resetPaginacion}" render="@form" />
 					</h:selectOneMenu>
 				</div>
-				<h:dataTable styleClass="tabla" id="tablaincidencias" var="incidencia"
+				<h:dataTable styleClass="tablaPaginada" id="tablaincidencias" var="incidencia"
 					rendered="#{not empty backingMostarIncidencias.listaIncidencias}"
 					value="#{backingMostarIncidencias.listaIncidencias}"
 					headerClass="list-header" rowClasses="filaimpar,filapar"
