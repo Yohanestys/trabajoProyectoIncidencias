@@ -264,7 +264,8 @@ public class ServicioUsuarioLogeado {
 			   +"li.incidencia.usuario "
 					   + "in (select g.usuario from Grupo g where  g.rol.idrol like :rol "
 					   + "and g.usuario.email like :email) "
-			   +"and li.incidencia.departamento.iddepartamento like :iddepartamento";
+			   +"and li.incidencia.departamento.iddepartamento like :iddepartamento "	   
+			   +"order by li.incidencia.fechaModificacion desc, li.incidencia.idincidencia desc";
 	   
 	   Query queryConsulta = em.createQuery(consulta);
 	   queryConsulta.setParameter("rol", rol);

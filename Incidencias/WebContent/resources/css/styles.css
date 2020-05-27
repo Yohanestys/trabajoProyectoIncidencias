@@ -126,6 +126,7 @@ body {
     width: 100%;
     height: var(--main-height);
     grid-area: m;
+    position: relative;
     background-color: rgba(250, 240, 230, 0.9);
     margin: 0;
     padding: 0;
@@ -314,7 +315,7 @@ body {
 	
 }
 
-.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table tr:first-of-type th{
+ tr:first-of-type th{
 	background-color: #999;
 }
 
@@ -324,6 +325,13 @@ body {
 	background-color: lightgray;
 }
 
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table{
+	display: table;
+	position: absolute;
+	left: 1%;
+	width: 98%;
+	
+}
 
 
 
