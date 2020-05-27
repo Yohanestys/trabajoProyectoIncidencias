@@ -325,12 +325,25 @@ body {
 	background-color: lightgray;
 }
 
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado{
+	position: absolute;
+	left: 0%;
+
+}
+
 .contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table{
 	display: table;
-	position: absolute;
-	left: 1%;
-	width: 98%;
+	width: 100%;
+
 	
+}
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table th
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado table td{
+	padding: 1em;
+}
+.contenedor .itemBody .itemMain #frmlistadoincidenciaspaginado  #paginaActual{
+	position:relative;
+	margin-top: 3em;
 }
 
 
