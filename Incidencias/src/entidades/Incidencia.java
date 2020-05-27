@@ -16,13 +16,19 @@ public class Incidencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name="INCIDENCIA_IDINCIDENCIA_GENERATOR", sequenceName="S_INCIDENCIA")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="INCIDENCIA_IDINCIDENCIA_GENERATOR")
 	private long idincidencia;
 
 	private String asunto;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="FECHA_INCIDENCIA")
-	private Date fechaIncidencia;
+	@Column(name="FECHA_CREACION")
+	private Date fechaCreacion;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="FECHA_MODIFICACION")
+	private Date fechaModificacion;
 
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="incidencia")
@@ -48,6 +54,10 @@ public class Incidencia implements Serializable {
 	@JoinColumn(name="EMAIL_USUARIO")
 	private Usuario usuario;
 
+	//bi-directional many-to-one association to Lineadetalleincidencia
+	@OneToMany(mappedBy="incidencia")
+	private List<Lineadetalleincidencia> lineadetalleincidencias;
+
 	public Incidencia() {
 	}
 
@@ -67,12 +77,20 @@ public class Incidencia implements Serializable {
 		this.asunto = asunto;
 	}
 
-	public Date getFechaIncidencia() {
-		return this.fechaIncidencia;
+	public Date getFechaCreacion() {
+		return this.fechaCreacion;
 	}
 
-	public void setFechaIncidencia(Date fechaIncidencia) {
-		this.fechaIncidencia = fechaIncidencia;
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Date getFechaModificacion() {
+		return this.fechaModificacion;
+	}
+
+	public void setFechaModificacion(Date fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
 	}
 
 	public List<Comentario> getComentarios() {
@@ -127,6 +145,28 @@ public class Incidencia implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<Lineadetalleincidencia> getLineadetalleincidencias() {
+		return this.lineadetalleincidencias;
+	}
+
+	public void setLineadetalleincidencias(List<Lineadetalleincidencia> lineadetalleincidencias) {
+		this.lineadetalleincidencias = lineadetalleincidencias;
+	}
+
+	public Lineadetalleincidencia addLineadetalleincidencia(Lineadetalleincidencia lineadetalleincidencia) {
+		getLineadetalleincidencias().add(lineadetalleincidencia);
+		lineadetalleincidencia.setIncidencia(this);
+
+		return lineadetalleincidencia;
+	}
+
+	public Lineadetalleincidencia removeLineadetalleincidencia(Lineadetalleincidencia lineadetalleincidencia) {
+		getLineadetalleincidencias().remove(lineadetalleincidencia);
+		lineadetalleincidencia.setIncidencia(null);
+
+		return lineadetalleincidencia;
 	}
 
 }

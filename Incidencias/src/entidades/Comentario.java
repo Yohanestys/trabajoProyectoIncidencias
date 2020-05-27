@@ -16,6 +16,8 @@ public class Comentario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name="COMENTARIOS_IDCOMENTARIO_GENERATOR", sequenceName="S_COMENTARIO")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COMENTARIOS_IDCOMENTARIO_GENERATOR")
 	private long idcomentario;
 
 	private String comentario;

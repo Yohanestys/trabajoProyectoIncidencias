@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.faces.application.FacesMessage;
 
+import entidades.Grupo;
 import entidades.Usuario;
 import servicios.ServicioUsuarioLogeado;
 
@@ -81,12 +82,14 @@ public class backingAuth implements Serializable {
 	public void updateUser() {
 		try {
 			System.out.println(this.password);
+			
 			if (!(this.password.equals("*******************"))) {
 				String passwd = encriptacion.Md5Hash.rMd5Hash(this.password);
 				usuarioLogeado.setPassword(passwd);
 				servicioUsuarioLogeado.updateUser(usuarioLogeado);
-
 				System.out.println(usuarioLogeado.getPassword());
+				Grupo grupo = servicioUsuarioLogeado.getGroup();
+				System.out.println("Perfil: "+ grupo.getRol().getIdrol());
 				FacesContext context = FacesContext.getCurrentInstance();
 				ResourceBundle archivomensajes = ResourceBundle.getBundle("resources.application",
 						context.getViewRoot().getLocale());
@@ -95,6 +98,7 @@ public class backingAuth implements Serializable {
 								archivomensajes.getString("generico.registroActualizado"),
 								archivomensajes.getString("generico.registroActualizado")));
 			}
+			
 		} catch (EJBException e) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			if (e.getCause() instanceof OptimisticLockException)

@@ -24,6 +24,10 @@ public class Estadoincidencia implements Serializable {
 	@OneToMany(mappedBy="estadoincidencia")
 	private List<Incidencia> incidencias;
 
+	//bi-directional many-to-one association to Lineadetalleincidencia
+	@OneToMany(mappedBy="estadoincidencia")
+	private List<Lineadetalleincidencia> lineadetalleincidencias;
+
 	public Estadoincidencia() {
 	}
 
@@ -63,6 +67,28 @@ public class Estadoincidencia implements Serializable {
 		incidencia.setEstadoincidencia(null);
 
 		return incidencia;
+	}
+
+	public List<Lineadetalleincidencia> getLineadetalleincidencias() {
+		return this.lineadetalleincidencias;
+	}
+
+	public void setLineadetalleincidencias(List<Lineadetalleincidencia> lineadetalleincidencias) {
+		this.lineadetalleincidencias = lineadetalleincidencias;
+	}
+
+	public Lineadetalleincidencia addLineadetalleincidencia(Lineadetalleincidencia lineadetalleincidencia) {
+		getLineadetalleincidencias().add(lineadetalleincidencia);
+		lineadetalleincidencia.setEstadoincidencia(this);
+
+		return lineadetalleincidencia;
+	}
+
+	public Lineadetalleincidencia removeLineadetalleincidencia(Lineadetalleincidencia lineadetalleincidencia) {
+		getLineadetalleincidencias().remove(lineadetalleincidencia);
+		lineadetalleincidencia.setEstadoincidencia(null);
+
+		return lineadetalleincidencia;
 	}
 
 }

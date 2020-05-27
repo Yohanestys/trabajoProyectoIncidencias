@@ -42,8 +42,6 @@ public class backingCrearUsuario implements Serializable{
 	private String tel;
 	private String rol;
 	
-	private Grupo grupo;
-
 	public backingCrearUsuario() {
 		// TODO Auto-generated constructor stub
 	}

@@ -17,8 +17,6 @@ public class Prioridad implements Serializable {
 	@Id
 	private long id;
 
-	private String descripcion;
-
 	private String tipo;
 
 	//bi-directional many-to-one association to Incidencia
@@ -34,14 +32,6 @@ public class Prioridad implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getDescripcion() {
-		return this.descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public String getTipo() {

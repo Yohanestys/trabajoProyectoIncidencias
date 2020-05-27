@@ -8,6 +8,8 @@
 		<class>entidades.Grupo</class>
 		<class>entidades.GrupoPK</class>
 		<class>entidades.Incidencia</class>
+		<class>entidades.Lineadetalleincidencia</class>
+		<class>entidades.LineadetalleincidenciaPK</class>
 		<class>entidades.Prioridad</class>
 		<class>entidades.Rol</class>
 		<class>entidades.Usuario</class>

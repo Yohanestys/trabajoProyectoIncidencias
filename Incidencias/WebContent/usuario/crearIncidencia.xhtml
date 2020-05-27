@@ -19,13 +19,56 @@
 						<h:outputLabel value="#{msg['pagina.incidencia.categoria']}"
 							for="frmnuevoUsuario"></h:outputLabel>
 						<f:selectItems value="#{backingCrearIncidencia.listaDepartamentos}"
-							var="departamento" itemValue="##{departamento.iddepartamento}}"
+							var="departamento" itemValue="#{departamento.iddepartamento}"
 							itemLabel="#{departamento.nombreDepartamento}" />
 						<f:ajax event="change" render="@form" execute="@form" />
 					</h:selectOneMenu>
-				</h:form>
-			</h:panelGrid>
-
+					<br/><br />
+					<h:panelGrid
+					rendered="#{backingCrearIncidencia.listaPrioridades!=null}"
+					>
+						<h:selectOneMenu value="#{backingCrearIncidencia.idprioridad}">
+						<h:outputLabel value="Elige una prioridad"
+						for="frmnuevoUsuario">
+						
+						
+						</h:outputLabel>
+						<f:selectItems value="#{backingCrearIncidencia.listaPrioridades}"
+							var="prioridad" itemValue="#{prioridad.id}" itemLabel="#{prioridad.tipo}"
+						/>
+						
+						<f:ajax event="change" render="@form" execute="@form" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+					
+					
+					<h:outputLabel
+						value="Asunto"
+					></h:outputLabel>
+					<h:inputText
+						value="#{backingCrearIncidencia.nuevaIncidencia.asunto}"
+					>
+					</h:inputText>
+					<br />
+					<h:outputLabel
+						value="Comentario"
+					></h:outputLabel>
+					<h:inputTextarea cols="80" rows="16" 
+						value="#{backingCrearIncidencia.nuevoComentario.comentario}"
+					>
+					</h:inputTextarea>
+					
+						
+							<h:commandButton action="#{backingCrearIncidencia.crearIncidencia}"
+								value="#{msg['generico.botonguardar']}">
+								<f:ajax execute="@form"
+									render="@form frmeditUsuarios :messages" />
+							</h:commandButton>
+							
+						
+					</h:form>
+				</h:panelGrid>
+				
 		</div>
 	</ui:define>
 
