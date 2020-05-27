@@ -92,7 +92,7 @@ public class ServicioUsuarioLogeado {
     }
     
     // *** Crear incidencia ***
-    public void crearIncidencia(Incidencia nuevaIncidencia,Comentario nuevoComentario, long idprioridad, long iddepartamento){
+    public void crearIncidencia(Incidencia nuevaIncidencia,Comentario nuevoComentario, long idprioridad, String iddepartamento){
     	
     	String consunltaCodigoIncidencia = "SELECT S_INCIDENCIA.NEXTVAL AS idincidencia FROM DUAL";
     	Query queryCodigoIncidencia = em.createNativeQuery(consunltaCodigoIncidencia);

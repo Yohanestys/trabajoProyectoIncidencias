@@ -29,7 +29,7 @@ public class backingCrearIncidencia implements Serializable{
 	@EJB
 	private ServicioUsuarioLogeado servicioUsuarioLogeado;
 	private List<Departamento> listaDepartamentos;
-	private Long iddepartamento;
+	private String iddepartamento;
 	private List<Prioridad> listaPrioridades;
 	private Long idprioridad;
 	private Incidencia nuevaIncidencia = new Incidencia();
@@ -60,11 +60,11 @@ public class backingCrearIncidencia implements Serializable{
 		this.listaDepartamentos = listaDepartamentos;
 	}
 
-	public Long getIddepartamento() {
+	public String getIddepartamento() {
 		return iddepartamento;
 	}
 
-	public void setIddepartamento(Long iddepartamento) {
+	public void setIddepartamento(String iddepartamento) {
 		this.iddepartamento = iddepartamento;
 	}
 
