@@ -217,16 +217,15 @@ public class ServicioUsuarioLogeado {
     // *** Listar incidencias ***
     
    public Departamento getDepartamento(String rol, String email) {
-	   /*if(rol.equals("superadmin") || rol.equals("manager")) {
+	   if(rol.equals("superadmin") || rol.equals("manager") || rol.equals("user")) {
 		   rol = "%";
 		   email = "%";
-	   }*/
+	   }
 	   Departamento departamento = new Departamento();
 	  try {
-		   String consulta = "select li.incidencia.departamento from Lineadetalleincidencia li where "
-			   		+ "li.incidencia.usuario in (select g.usuario from Grupo g where "
-					   		+"g.usuario.email like :email " 
-					   		+"and g.rol.idrol like :rol) and li.incidencia.departamento is not null";	
+		   String consulta = "select u.departamento from Usuario u where u in "
+		   		+"(select g.usuario from Grupo g where "
+					   		+"g.usuario.email like :email and g.rol.idrol like :rol and u.departamento is not null)";	
 			   
 			   Query queryconsulta = em.createQuery(consulta);
 			   queryconsulta.setParameter("email", email);

@@ -31,7 +31,7 @@ public class ServicioCrearUsuario {
     
     /* ************************/
     
-  	public Usuario nuevoUsuario(Usuario u,Long iddepartamento) {
+  	public Usuario nuevoUsuario(Usuario u, String iddepartamento) {
   		
   		if(iddepartamento!=null){
   		Departamento departamento = em.find(Departamento.class, iddepartamento);

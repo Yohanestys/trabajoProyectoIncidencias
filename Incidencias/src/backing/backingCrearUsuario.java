@@ -27,7 +27,7 @@ public class backingCrearUsuario implements Serializable{
 	private List<Rol> listaPerfil;
 	private String idperfil;
 	private List<Departamento> listaDepartamento;
-	private Long iddepartamento;
+	private String iddepartamento;
 	
 	private Usuario usuario;
 
@@ -73,11 +73,11 @@ public class backingCrearUsuario implements Serializable{
 		this.listaDepartamento = listaDepartamento;
 	}
 
-	public Long getIddepartamento() {
+	public String getIddepartamento() {
 		return iddepartamento;
 	}
 
-	public void setIddepartamento(Long iddepartamento) {
+	public void setIddepartamento(String iddepartamento) {
 		this.iddepartamento = iddepartamento;
 	}
 

@@ -44,7 +44,7 @@ public class backingMostarIncidencias implements Serializable{
 				this.iddepartamento = null;
 			}
 			
-			this.iddepartamento = servicioUsuarioLogeado.getDepartamento(this.rol, this.email).getIddepartamento();
+			this.iddepartamento = departamento.getIddepartamento();
 			
 			if (paginacion == null) {
 				paginacion = new PaginacionHelper(5, 0) {
