@@ -16,7 +16,7 @@ public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private long iddepartamento;
+	private String iddepartamento;
 
 	@Column(name="NOMBRE_DEPARTAMENTO")
 	private String nombreDepartamento;
@@ -32,11 +32,11 @@ public class Departamento implements Serializable {
 	public Departamento() {
 	}
 
-	public long getIddepartamento() {
+	public String getIddepartamento() {
 		return this.iddepartamento;
 	}
 
-	public void setIddepartamento(long iddepartamento) {
+	public void setIddepartamento(String iddepartamento) {
 		this.iddepartamento = iddepartamento;
 	}
 

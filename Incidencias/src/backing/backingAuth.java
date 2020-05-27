@@ -29,6 +29,7 @@ public class backingAuth implements Serializable {
 	@EJB
 	private ServicioUsuarioLogeado servicioUsuarioLogeado;
 	private Usuario usuarioLogeado;
+	private Grupo grupoUsuarioLogeado;
 	private String password = "*******************";
 
 	// private String password;
@@ -54,10 +55,19 @@ public class backingAuth implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		usuarioLogeado = new Usuario();
-		usuarioLogeado = servicioUsuarioLogeado.getUser();
-
+		this.grupoUsuarioLogeado = servicioUsuarioLogeado.getGroup();
+		this.usuarioLogeado = servicioUsuarioLogeado.getUser();
 	}
+	
+
+	public Grupo getGrupoUsuarioLogeado() {
+		return grupoUsuarioLogeado;
+	}
+
+	public void setGrupoUsuarioLogeado(Grupo grupoUsuarioLogeado) {
+		this.grupoUsuarioLogeado = grupoUsuarioLogeado;
+	}
+	
 
 	public Usuario getUsuarioLogeado() {
 		return usuarioLogeado;
@@ -81,6 +91,8 @@ public class backingAuth implements Serializable {
 
 	public void updateUser() {
 		try {
+			
+			
 			System.out.println(this.password);
 			
 			if (!(this.password.equals("*******************"))) {

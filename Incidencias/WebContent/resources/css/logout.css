@@ -14,7 +14,7 @@
 	width: 100%;
 }
 
-#logout #tituloLogout{
+#logout .tituloLogout{
 	align-self: left;
 	position: absolute;
 	text-align: left;
@@ -25,6 +25,16 @@
 	padding: 0.4em 0.4em;
 	border-radius: 0.2em;
 	margin-bottom: 0.2em;
+}
+
+#logout .tituloLogout label{
+	widht: 100%;
+	height: 100%;	
+}
+
+#logout .tituloLogout label::before{
+	content: "";
+	dispay: block;
 }
 
 #logout input {

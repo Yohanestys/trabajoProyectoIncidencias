@@ -12,12 +12,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import entidades.Departamento;
-import entidades.Grupo;
 import entidades.Rol;
 import entidades.Usuario;
 import servicios.ServicioCrearUsuario;
-import javax.ejb.EJBException;
-import javax.persistence.OptimisticLockException;
 
 @Named
 @ViewScoped

@@ -9,8 +9,12 @@
 <ui:composition>
 	<h:panelGroup
 	rendered="#{not empty request.remoteUser}"
-	>
-		  <h:outputLabel  id="tituloLogout" value="#{msg['pagina.logout.welcome']} #{backingAuth.usuarioLogeado.nombre}" />
+	>		
+			<div class="tituloLogout" >
+		  <h:outputLabel  value="#{msg['pagina.logout.welcome']} #{backingAuth.grupoUsuarioLogeado.usuario.nombre}" />
+		  <br />
+		  <h:outputLabel  value="#{backingAuth.grupoUsuarioLogeado.rol.idrol}" />
+		  </div>
 		  <h:form>
 		    <h:commandButton action="#{backingAuth.logout}" value="#{msg['pagina.logout.logout']}" />
 		  </h:form>

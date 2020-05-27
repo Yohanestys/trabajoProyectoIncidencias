@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
+
+	<ui:define name="itemMain">
+	   	<h:messages id="messages" globalOnly="true" layout="table"
+			errorClass="advertencia" infoClass="info">
+		</h:messages>
+		<h:panelGroup id="panelTab" styleClass="panelTabla"
+			rendered="#{backingMostarIncidencias.paginacion.itemsCount>0}" layout="block">
+			<h:form id="frmlistadoincidenciaspaginado" prependId="false">
+				<div>&nbsp;</div>
+				<div class="navegacionTabla">
+					<h:outputText
+						value="Mostrando #{backingMostarIncidencias.paginacion.primerElementoPagina}..#{backingMostarIncidencias.paginacion.ultimoElementoPagina} de #{backingMostarIncidencias.paginacion.itemsCount}" />
+					&nbsp;
+					<h:commandLink id="anterior" value="Anterior"
+						rendered="#{backingMostarIncidencias.paginacion.hayPaginaAnterior}">
+						<f:ajax execute="@form" render="@form"
+							listener="#{backingMostarIncidencias.paginaAnterior}" />
+					</h:commandLink>
+					&nbsp;
+					<h:commandLink id="siguiente" value="Siguiente"
+						rendered="#{backingMostarIncidencias.paginacion.hayPaginaSiguiente}">
+						<f:ajax execute="@form" render="@form"
+							listener="#{backingMostarIncidencias.paginaSiguiente}" />
+					</h:commandLink>
+					&nbsp;
+					<h:selectOneMenu id="slctpaginacion"
+						value="#{backingMostarIncidencias.slctnrpag}">
+						<f:selectItem itemLabel="5" itemValue="5" />
+						<f:selectItem itemLabel="10" itemValue="10" />
+						<f:selectItem itemLabel="15" itemValue="15" />
+						<f:selectItem itemLabel="20" itemValue="20" />
+						<f:ajax listener="#{backingMostarIncidencias.resetPaginacion}" render="@form" />
+					</h:selectOneMenu>
+				</div>
+				<h:dataTable styleClass="tabla" id="tablaincidencias" var="incidencia"
+					rendered="#{not empty backingMostarIncidencias.listaIncidencias}"
+					value="#{backingMostarIncidencias.listaIncidencias}"
+					headerClass="list-header" rowClasses="filaimpar,filapar"
+					columnClasses="just-derecha,just-izquierda,just-izquierda,just-centro">
+					<f:facet name="header">
+						<h:outputText value="Listado de Incidencias"></h:outputText>
+					</f:facet>
+					
+					<h:column id="FechaCreacion">
+						<f:facet name="header">
+							<h:outputText value="FechaCreacion">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.fechaCreacion}">
+							<!--  <f:convertNumber type="currency" locale="es_ES">
+							</f:convertNumber>-->
+						</h:outputText>
+					</h:column>
+					
+					<h:column id="Estado">
+						<f:facet name="header">
+							<h:outputText value="Estado">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.estadoincidencia.descripcionEstado}">
+							<!--  <f:convertNumber type="currency" locale="es_ES">
+							</f:convertNumber>-->
+						</h:outputText>
+					</h:column>
+					
+					
+					<h:column id="EmailCreador">
+						<f:facet name="header">
+							<h:outputText value="Email creador">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.usuario.email}">
+							<!--  <f:convertNumber type="currency" locale="es_ES">
+							</f:convertNumber>-->
+						</h:outputText>
+					</h:column>
+					
+					<h:column id="CreadaPor">
+						<f:facet name="header">
+							<h:outputText value="Usuario creador">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="">
+							<!--  <f:convertNumber type="currency" locale="es_ES">
+							</f:convertNumber>-->
+						</h:outputText>
+					</h:column>
+					
+					<h:column id="IdIncidencia">
+						<f:facet name="header">
+							<h:outputText value="IdIncidencia">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.idincidencia}">
+							<!--  <f:convertNumber type="currency" locale="es_ES">
+							</f:convertNumber>-->
+						</h:outputText>
+					</h:column>
+					<h:column id="Asunto">
+						<f:facet name="header">
+							<h:outputText value="Asunto">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.asunto}">
+						</h:outputText>
+					</h:column>
+					<h:column id="Departamento">
+						<f:facet name="header">
+							<h:outputText value="Departamento">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.departamento.nombreDepartamento}">
+						</h:outputText>
+					</h:column>
+					
+					<h:column id="Prioridad">
+						<f:facet name="header">
+							<h:outputText value="Prioridad">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{incidencia.prioridad.tipo}">
+							<!--  <f:convertNumber type="currency" locale="es_ES">
+							</f:convertNumber>-->
+						</h:outputText>
+					</h:column>
+					
+					
+					<h:column id="Editar" headerClass="list-header">
+						<f:facet name="header">
+							<h:outputText value=""></h:outputText>
+						</f:facet>
+
+					</h:column>
+				</h:dataTable>
+				<div>
+					<h:outputText id="pagactual"
+						value="Pagina:#{backingMostarIncidencias.paginacion.pagina+1}" />
+					<h:outputText value="&nbsp;"></h:outputText>
+					<h:outputText id="regpag"
+						value="Registros por pagina: #{backingMostarIncidencias.paginacion.nrpag}" />
+				</div>
+				<div>&nbsp;</div>
+			</h:form>
+		</h:panelGroup>
+		<div>&nbsp;</div>
+	</ui:define>
+
+</ui:composition>
+</html>

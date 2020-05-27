@@ -587,6 +587,27 @@ body {
     	margin: 0;
     	line-height: 90%;
     }
+    
+  
+  .contenedor .itemBody .itemMain #panelTap {
+    widh: 96%;
+    margin-left:2%;
+    border: 1px solid #000;
+    }
+    
+    
+ .contenedor .itemBody .itemMain #panelTap form{
+    widh: 100%;
+    margin-left:2%;
+    border: 1px solid #000;
+    }
+    
+   .contenedor .itemBody .itemMain #panelTap form table{
+
+    border: 1px solid #000;
+    }
+    
+    
 	
 }
 

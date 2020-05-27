@@ -74,7 +74,7 @@ public class ServicioUsuarioLogeado {
      
     // Fin parte perfil Usuario
     
-    // Parte Incidencias
+    // *** Parte Incidencias ***
     
     @SuppressWarnings("unchecked")
     public List<Departamento> addDepartamentos() {
@@ -91,6 +91,7 @@ public class ServicioUsuarioLogeado {
     	return listaPrioridades;
     }
     
+    // *** Crear incidencia ***
     public void crearIncidencia(Incidencia nuevaIncidencia,Comentario nuevoComentario, long idprioridad, long iddepartamento){
     	
     	String consunltaCodigoIncidencia = "SELECT S_INCIDENCIA.NEXTVAL AS idincidencia FROM DUAL";
@@ -211,5 +212,101 @@ public class ServicioUsuarioLogeado {
     	
     }
     
+    // *** Fin Crear incidencia ***
+    
+    // *** Listar incidencias ***
+    
+   public Departamento getDepartamento(String rol, String email) {
+	   /*if(rol.equals("superadmin") || rol.equals("manager")) {
+		   rol = "%";
+		   email = "%";
+	   }*/
+	   Departamento departamento = new Departamento();
+	  try {
+		   String consulta = "select li.incidencia.departamento from Lineadetalleincidencia li where "
+			   		+ "li.incidencia.usuario in (select g.usuario from Grupo g where "
+					   		+"g.usuario.email like :email " 
+					   		+"and g.rol.idrol like :rol) and li.incidencia.departamento is not null";	
+			   
+			   Query queryconsulta = em.createQuery(consulta);
+			   queryconsulta.setParameter("email", email);
+			   queryconsulta.setParameter("rol", rol);
+			   departamento = (Departamento) queryconsulta.getSingleResult();
+	} catch (javax.persistence.NoResultException e) {
+		// TODO: handle exception
+	}
+	  
 
+
+	   
+	   return departamento;
+   }
+    
+   @SuppressWarnings("unchecked")
+   public List<Incidencia> incidenciasEnRango(int primerResultado, int maxResultados, String rol, String email, String iddepartamento){
+	   
+	   
+	   if(rol.equals("superadmin") || rol.equals("manager")) {
+		   rol = "%";
+		   email = "%";
+		   iddepartamento = "%";
+	   }
+	   
+	   if(rol.equals("técnico")) {
+		   email = "%";
+	   }
+	   
+	   if(rol.equals("user")){
+		   iddepartamento = "%";
+	   }
+	   
+	   
+	   String consulta = "select li.incidencia from Lineadetalleincidencia li where "
+			   +"li.incidencia.usuario "
+					   + "in (select g.usuario from Grupo g where  g.rol.idrol like :rol "
+					   + "and g.usuario.email like :email) "
+			   +"and li.incidencia.departamento.iddepartamento like :iddepartamento";
+	   
+	   Query queryConsulta = em.createQuery(consulta);
+	   queryConsulta.setParameter("rol", rol);
+	   queryConsulta.setParameter("email", email);
+	   queryConsulta.setParameter("iddepartamento", iddepartamento);
+	   
+	   queryConsulta.setFirstResult(primerResultado);
+	   queryConsulta.setMaxResults(maxResultados);
+	   List<Incidencia> listaIncidencias = (List<Incidencia>) queryConsulta.getResultList();
+	   return listaIncidencias;
+   }
+   
+   public long getTolalIncidencias(String rol, String email, String iddepartamento) {
+	   
+	   if(rol.equals("superadmin") || rol.equals("manager")) {
+		   rol = "%";
+		   email = "%";
+		   iddepartamento = "%";
+	   }
+	   
+	   if(rol.equals("técnico")) {
+		   email = "%";
+	   }
+	   
+	   if(rol.equals("user")){
+		   iddepartamento = "%";
+	   }
+	   
+	   
+	   String consulta = "select count(li.incidencia) from Lineadetalleincidencia li where "
+			   +"li.incidencia.usuario "
+					   + "in (select g.usuario from Grupo g where  g.rol.idrol like :rol "
+					   + "and g.usuario.email like :email) "
+			   +"and li.incidencia.departamento.iddepartamento like :iddepartamento";
+	   
+	   Query queryConsulta = em.createQuery(consulta);
+	   queryConsulta.setParameter("rol", rol);
+	   queryConsulta.setParameter("email", email);
+	   queryConsulta.setParameter("iddepartamento", iddepartamento);
+	   
+	   return (Long) queryConsulta.getSingleResult();
+   }
+    
 }
